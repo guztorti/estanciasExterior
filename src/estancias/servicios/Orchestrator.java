@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class Orchestrator {
 
+    private FamiliaServicio fs;
     private Scanner scn;
     private String mensaje  = " a) Listar aquellas familias que tienen al menos 3 hijos, y con edad máxima inferior a 10 años.\n"
                 + "b) Buscar y listar las casas disponibles para el periodo comprendido entre el 1 de\n"
@@ -36,15 +37,17 @@ public class Orchestrator {
 
     public Orchestrator() {
         scn = new Scanner(System.in).useDelimiter("\n");
-        
+        fs = new FamiliaServicio();
     }
-    public void menu(){
+    public void menu() throws Exception{
         char opcion = '1';
+        try{
         do {            
             System.out.println(mensaje);
             opcion = scn.next().toLowerCase().charAt(0);
             switch (opcion){
                 case 'a':  //Listar aquellas familias que tienen al menos 3 hijos, y con edad máxima inferior a 10 años.
+                    fs.listarFamiliasHijos(3, 0, 10);
                     break;
                 case 'b':  //Buscar y listar las casas disponibles para el periodo comprendido entre el 1 de agosto de 2020 y el 31 de agosto de 2020 en Reino Unido.
                     break;
@@ -71,6 +74,9 @@ public class Orchestrator {
                     System.out.println("no se reconoce la opción elegida");
             }
         } while (opcion != 'z');
+        }catch (Exception e){
+            throw e;
+        }
     }
 
 }

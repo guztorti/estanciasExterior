@@ -32,4 +32,17 @@ public class FamiliaServicio {
         
     }
     
+    public void listarFamiliasHijos(int cantHijos, int edadMin, int edadMax) throws Exception{
+        try {
+            for (Familia familia : dao.consultarFamilia(cantHijos, edadMin, edadMax)) {
+            System.out.println(familia);
+            }
+        
+        } catch (Exception e) {
+            throw e;
+        }
+        
+        
+    }
+    
 }

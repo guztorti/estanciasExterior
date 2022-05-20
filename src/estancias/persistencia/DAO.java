@@ -94,21 +94,21 @@ public abstract class DAO {
         }
     }
     
-    protected void consultarBase(String url , String dato1, int dato2, String dato3, String dato4, String dato5, Date dato6, Date dato7, int dato8, int dato9, double dato10, String dato11) throws ClassNotFoundException, SQLException{
+    protected void consultarBase(String url , String dato1, int dato2, String dato3, String dato4, String dato5, String dato6, String dato7, int dato8, int dato9, double dato10, String dato11) throws ClassNotFoundException, SQLException{
         try {
             conectarBase();
             sentenciaPreparada = conexion.prepareStatement(url);
             sentenciaPreparada.setString(1, dato1); //calle
             sentenciaPreparada.setInt(2, dato2); //numero
             sentenciaPreparada.setString(3, dato3); //codigo postal
-            sentenciaPreparada.setString(5, dato4); //ciudad
-            sentenciaPreparada.setString(6, dato5); //pais
-            sentenciaPreparada.setDate(7, dato6); //fecha desde
-            sentenciaPreparada.setDate(8, dato7); //fecha desde
-            sentenciaPreparada.setInt(9, dato8); //tiempo minimo
-            sentenciaPreparada.setInt(10, dato9); //tiempo maximo
-            sentenciaPreparada.setDouble(11, dato10); //prcio habitacion
-            sentenciaPreparada.setString(12, dato11); //tipo vivienda
+            sentenciaPreparada.setString(4, dato4); //ciudad
+            sentenciaPreparada.setString(5, dato5); //pais
+            sentenciaPreparada.setString(6, dato6); //fecha desde
+            sentenciaPreparada.setString(7, dato7); //fecha desde
+            sentenciaPreparada.setInt(8, dato8); //tiempo minimo
+            sentenciaPreparada.setInt(9, dato9); //tiempo maximo
+            sentenciaPreparada.setDouble(10, dato10); //prcio habitacion
+            sentenciaPreparada.setString(11, dato11); //tipo vivienda
             resultado = sentenciaPreparada.executeQuery();
             
         } catch (ClassNotFoundException| SQLException e) {

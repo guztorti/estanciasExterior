@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Orchestrator {
 
     private FamiliaServicio fs;
+    private CasaServicio cs;
     private Scanner scn;
     private String mensaje  = " a) Listar aquellas familias que tienen al menos 3 hijos, y con edad máxima inferior a 10 años.\n"
                 + "b) Buscar y listar las casas disponibles para el periodo comprendido entre el 1 de\n"
@@ -38,6 +39,7 @@ public class Orchestrator {
     public Orchestrator() {
         scn = new Scanner(System.in).useDelimiter("\n");
         fs = new FamiliaServicio();
+        cs = new CasaServicio();
     }
     public void menu() throws Exception{
         char opcion = '1';
@@ -50,12 +52,16 @@ public class Orchestrator {
                     fs.listarFamiliasHijos(3, 0, 10);
                     break;
                 case 'b':  //Buscar y listar las casas disponibles para el periodo comprendido entre el 1 de agosto de 2020 y el 31 de agosto de 2020 en Reino Unido.
+                    cs.listarCasasFechasPais("20200801", "20200831", "Reino Unido");
                     break;
                 case 'c':  //Encuentra todas aquellas familias cuya dirección de mail sea de Hotmail.
+                    fs.listarFamiliasEmailContiente("Hotmail");
                     break;
                 case 'd':  //Consulta la BD para que te devuelva aquellas casas disponibles a partir de una fecha dada y un número de días específico.
+                    cs.listarCasasDesdeFechaCantidadDias("20200801", 10);
                     break;
-                case 'e':  //Listar los datos de todos los clientes que en algún momento realizaron una estancia.
+                case 'e':  //Listar los datos de todos los clientes que en algún momento realizaron una estancia y la descripción de la casa donde la realizaron.
+                    
                     break;
                 case 'f':  //Listar todas las estancias que han sido reservadas por un cliente, mostrar el nombre, país y ciudad del cliente y además la información de la casa que reservó. La que reemplazaría a la anterior.
                     break;

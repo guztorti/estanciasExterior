@@ -28,15 +28,15 @@ public class Casa {
     public Casa() {
     }
 
-    public Casa(int idCasa, String calle, int numero, String codigoPostal, String ciudad, String pais, Date fechaDesde, Date fechaHasta, int tiempoMinimo, int tiempoMaximo, double precioHabitacion, String tipoVivienda) {
+    public Casa(int idCasa, String calle, int numero, String codigoPostal, String ciudad, String pais, String fechaDesde, String fechaHasta, int tiempoMinimo, int tiempoMaximo, double precioHabitacion, String tipoVivienda) {
         this.idCasa = idCasa;
         this.calle = calle;
         this.numero = numero;
         this.codigoPostal = codigoPostal;
         this.ciudad = ciudad;
         this.pais = pais;
-        this.fechaDesde = fechaDesde;
-        this.fechaHasta = fechaHasta;
+        this.fechaDesde = new Date(Integer.parseInt(fechaDesde.substring(0, 4)), Integer.parseInt(fechaDesde.substring(4, 6)), Integer.parseInt(fechaDesde.substring(6, 8)));
+        this.fechaHasta = new Date(Integer.parseInt(fechaHasta.substring(0, 4)), Integer.parseInt(fechaHasta.substring(4, 6)), Integer.parseInt(fechaHasta.substring(6, 8)));
         this.tiempoMinimo = tiempoMinimo;
         this.tiempoMaximo = tiempoMaximo;
         this.precioHabitacion = precioHabitacion;

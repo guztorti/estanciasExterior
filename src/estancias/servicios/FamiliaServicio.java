@@ -45,4 +45,21 @@ public class FamiliaServicio {
         
     }
     
+    public void listarFamiliasEmailContiente(String cadenaABuscar)throws Exception{
+        try {
+            if (dao.buscarEnEmail(cadenaABuscar).size()<1) {
+                System.out.println("No hay familias con email que contenga: "+cadenaABuscar);
+            }else{
+                for (Familia familia : dao.buscarEnEmail(cadenaABuscar)) {
+                    System.out.println(familia);
+                }
+            }
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    
+    
 }

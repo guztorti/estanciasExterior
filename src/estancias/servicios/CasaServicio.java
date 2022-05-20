@@ -10,5 +10,7 @@ package estancias.servicios;
  * @author Gustavo Torti
  */
 public class CasaServicio {
-    public void listarCasasFechasPais()
+    public void listarCasasFechasPais(){
+         
+    }
 }

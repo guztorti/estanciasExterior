@@ -5,10 +5,23 @@
  */
 package estancias.servicios;
 
+import estancias.entidades.Cliente;
+import estancias.persistencia.ClienteDAO;
+
 /**
  *
  * @author Gustavo Torti <guztorti@gmail.com>
  */
 public class ClienteServicio {
+    ClienteDAO dao;
+    Cliente cliente;
+   
+
+    public ClienteServicio() {
+        dao = new ClienteDAO();
+        cliente = new Cliente();
+    }
+    
+    
     
 }

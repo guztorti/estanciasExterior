@@ -5,6 +5,7 @@
  */
 package estancias.servicios;
 
+import estancias.persistencia.ClienteDAO;
 import java.util.Scanner;
 
 /**
@@ -16,6 +17,7 @@ public class Orchestrator {
     private FamiliaServicio fs;
     private CasaServicio cs;
     private Scanner scn;
+    private ClienteDAO clDAO;
     private String mensaje  = " a) Listar aquellas familias que tienen al menos 3 hijos, y con edad máxima inferior a 10 años.\n"
                 + "b) Buscar y listar las casas disponibles para el periodo comprendido entre el 1 de\n"
                 + "\tagosto de 2020 y el 31 de agosto de 2020 en Reino Unido.\n"
@@ -40,6 +42,7 @@ public class Orchestrator {
         scn = new Scanner(System.in).useDelimiter("\n");
         fs = new FamiliaServicio();
         cs = new CasaServicio();
+        clDAO = new ClienteDAO();
     }
     public void menu() throws Exception{
         char opcion = '1';
@@ -61,7 +64,7 @@ public class Orchestrator {
                     cs.listarCasasDesdeFechaCantidadDias("20200801", 10);
                     break;
                 case 'e':  //Listar los datos de todos los clientes que en algún momento realizaron una estancia y la descripción de la casa donde la realizaron.
-                    
+                    listarClientesQueRealizaronEstancia();
                     break;
                 case 'f':  //Listar todas las estancias que han sido reservadas por un cliente, mostrar el nombre, país y ciudad del cliente y además la información de la casa que reservó. La que reemplazaría a la anterior.
                     break;
@@ -83,6 +86,20 @@ public class Orchestrator {
         }catch (Exception e){
             throw e;
         }
+    }
+
+    private void listarClientesQueRealizaronEstancia() {
+        try {
+            if (clDAO.listarClientesConEstancias().size()<1) {
+                System.out.println("No hay clientes con esas características");
+            } else {
+                for (ListaClienteMensaje cliente : clDAO.listarClientesConEstancias()) {
+                    System.out.println(cliente.toString());
+                }
+            }
+        } catch (Exception e) {
+        }
+        
     }
 
 }
